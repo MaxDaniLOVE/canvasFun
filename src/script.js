@@ -6,6 +6,9 @@ let canvas = document.getElementById('canvas'),
     woo = new Image(),
     sky_bg = new Image();
     
+let soundtrack = new Audio;
+    soundtrack.src = "audio/dissonance.mp3" 
+
 var bgMove = [{
     X: 0,
     Y: 0
@@ -33,6 +36,8 @@ let difficulty = 1;
     
 
     function draw(){
+        soundtrack.play();
+
         drawBg(sky_bg, bgMove, 0, 0.025) 
         drawBg(town_far, bgTownFarMove, 284, 0.25)
         drawBg(ground_bg, bgGround, canvas.height - 150, 1)
