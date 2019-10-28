@@ -9,8 +9,8 @@ var bgMove = [{
     Y: 0
 }]    
 var bgTownFarMove = [{
-    XTownFar: 0,
-    YTownFar: 284
+    X: 0,
+    Y: 284
 }] 
 var bgGround = [{
     X: 0,
@@ -27,50 +27,25 @@ var bgGround = [{
 
 
     function draw(){
-         
-        drawBgSky()
-        drawTownFar()
-        drawGround()
+        drawBg(sky_bg, bgMove, 0, 0.5) 
+        drawBg(town_far, bgTownFarMove, 284, 1)
+        drawBg(ground_bg, bgGround, canvas.height - 150, 1)
 
         ctx.drawImage(moon, 20, 20)
         requestAnimationFrame(draw)
     }
     
-    function drawBgSky() {
-        for (let i = 0; i < bgMove.length; i++) {
-            if(bgMove[i].X === 0){
-                bgMove.push({
-                    X: canvas.width,
-                    Y: 0
-                })
-            }
-            ctx.drawImage(sky_bg, bgMove[i].X, bgMove[i].Y)
-            bgMove[i].X -= 0.2
-        }
-    }
-    function drawTownFar(){
-        for (let j = 0; j < bgTownFarMove.length; j++) {
-            if(bgTownFarMove[j].XTownFar === 0){
-                bgTownFarMove.push({
-                    XTownFar: canvas.width,
-                    YTownFar: 284
-                })
-            }
-            ctx.drawImage(town_far, bgTownFarMove[j].XTownFar, bgTownFarMove[j].YTownFar)
-            bgTownFarMove[j].XTownFar -= .5
-        }
-    }
-    function drawGround(){
-        for (let k = 0; k < bgGround.length; k++) {
-            if(bgGround[k].X === 0){
-                bgGround.push({
-                    X: canvas.width,
-                    Y: canvas.height - 150
-                })
-            }
-            ctx.drawImage(ground_bg, bgGround[k].X, bgGround[k].Y);
-            bgGround[k].X --
-        }
-    }
 
+    function drawBg(image, newArr, yStartPositionBg, animationSpeed) {
+        for (let i = 0; i < newArr.length; i++) {
+            if(newArr[i].X === 0){
+                newArr.push({
+                    X: canvas.width,
+                    Y: yStartPositionBg
+                })
+            }
+            ctx.drawImage(image, newArr[i].X, newArr[i].Y)
+            newArr[i].X -= animationSpeed
+        }
+    }
     sky_bg.onload = draw;
