@@ -45,7 +45,7 @@ var bgGround = [{
                 })
             }
             ctx.drawImage(sky_bg, bgMove[i].X, bgMove[i].Y)
-            bgMove[i].X --
+            bgMove[i].X -= 0.2
         }
     }
     function drawTownFar(){
@@ -69,7 +69,7 @@ var bgGround = [{
                 })
             }
             ctx.drawImage(ground_bg, bgGround[k].X, bgGround[k].Y);
-            bgGround[k].X -= 0.2
+            bgGround[k].X --
         }
     }
 
