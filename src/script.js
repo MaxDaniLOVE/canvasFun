@@ -17,7 +17,7 @@ var bgGround = [{
     Y: canvas.height - 150
 }] 
 
-
+let difficulty = 1;
 
     ground_bg.src = "images/ground_bg.png" 
     town_far.src = "images/town_far.png"    
@@ -27,11 +27,15 @@ var bgGround = [{
 
 
     function draw(){
-        drawBg(sky_bg, bgMove, 0, 0.5) 
-        drawBg(town_far, bgTownFarMove, 284, 1)
+        drawBg(sky_bg, bgMove, 0, 0.05) 
+        drawBg(town_far, bgTownFarMove, 284, 0.25)
         drawBg(ground_bg, bgGround, canvas.height - 150, 1)
 
         ctx.drawImage(moon, 20, 20)
+
+
+
+
         requestAnimationFrame(draw)
     }
     
