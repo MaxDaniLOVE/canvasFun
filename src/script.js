@@ -33,13 +33,13 @@ let difficulty = 1;
     
 
     function draw(){
-        drawBg(sky_bg, bgMove, 0, 0.05) 
+        drawBg(sky_bg, bgMove, 0, 0.025) 
         drawBg(town_far, bgTownFarMove, 284, 0.25)
         drawBg(ground_bg, bgGround, canvas.height - 150, 1)
 
         ctx.drawImage(moon, 20, 20)
         wooWalk()
-        
+
         requestAnimationFrame(draw)
     }
 
@@ -48,7 +48,7 @@ let difficulty = 1;
      * @param {*} image --- image that should be shown
      * @param {*} newArr --- array to push another image that should be shown
      * @param {*} yStartPositionBg --- starting position on axis Y to show image
-     ! @param {*} animationSpeed --- 0.05 /// 0.25 /// 0.5 /// 1       
+     ! @param {*} animationSpeed --- 0.025 /// 0.25 /// 0.5 /// 1       
      */
 
     function drawBg(image, newArr, yStartPositionBg, animationSpeed) {
