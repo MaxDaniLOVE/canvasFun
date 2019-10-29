@@ -1,3 +1,4 @@
+
 let canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d'),
     moon = new Image(),
@@ -31,6 +32,9 @@ var wooMove = [{
     Y: canvas.height - 110,
     gravity: 0.3
 }]
+     canvas.addEventListener('click', () => {
+        document.documentElement.webkitRequestFullScreen()
+     })   
 
     ground_bg.src = "images/ground_bg.png" 
     town_far.src = "images/town_far.png"    
