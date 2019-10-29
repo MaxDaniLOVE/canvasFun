@@ -8,7 +8,7 @@ let canvas = document.getElementById('canvas'),
     sky_bg = new Image();
     
 let soundtrack = new Audio;
-    soundtrack.src = "audio/dissonance.mp3" 
+    soundtrack.src = "audio/dissonance.mp3";
 
 var bgMove = [{
     X: 0,
@@ -39,6 +39,34 @@ var wooMove = [{
     town_close_bg.src = "images/townClose.png"
     sky_bg.src = "images/sky_bg.png"
     
+
+    function swipeRule() {
+        let startYPos, 
+            endYPos,
+            difference = 0;
+        canvas.addEventListener('touchstart', () => {
+            startYPos = (event.changedTouches[0].pageY);
+            console.log('start ' + startYPos);
+        })
+        canvas.addEventListener('touchend', () => {
+            endYPos = (event.changedTouches[0].pageY);
+            console.log('end ' + endYPos);
+            difference = startYPos - endYPos;
+            console.log('difference ' + difference);
+        })
+        
+        
+        if (difference > 0) {
+            // * KEYUP
+            wooMove[0].Y -= 5
+        } else {
+            // * KEYDOWN
+            wooMove[0].Y += 5
+        }
+    }
+
+    swipeRule()
+
     function keyEventForWoo(){document.addEventListener("keydown", event => {
         switch (event.keyCode) {
             case 38:
@@ -81,10 +109,10 @@ var wooMove = [{
 
     /*
      ! ATTENTION               
-     * @param {*} image --- image that should be shown
-     * @param {*} newArr --- array to push another image that should be shown
-     * @param {*} attitude --- image attitude to canvas
-     * @param {*} yStartPositionBg --- starting position on axis Y to show image
+     ! @param {*} image --- image that should be shown
+     ! @param {*} newArr --- array to push another image that should be shown
+     ! @param {*} attitude --- image attitude to canvas
+     ! @param {*} yStartPositionBg --- starting position on axis Y to show image
      ! @param {*} animationSpeed --- 0.005 /// 0.25 /// 0.5 /// 1       
      */
 
