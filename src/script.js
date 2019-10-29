@@ -4,6 +4,7 @@ let canvas = document.getElementById('canvas'),
     town_far = new Image(),
     ground_bg = new Image(),
     woo = new Image(),
+    town_close_bg = new Image(),
     sky_bg = new Image();
     
 let soundtrack = new Audio;
@@ -15,7 +16,11 @@ var bgMove = [{
 }]    
 var bgTownFarMove = [{
     X: 0,
-    Y: 284
+    Y: 184
+}] 
+var bgTownCloseMove = [{
+    X: 0,
+    Y: 205
 }] 
 var bgGround = [{
     X: 0,
@@ -32,19 +37,23 @@ let difficulty = 1;
     town_far.src = "images/town_far.png"    
     moon.src = "images/moon.png"
     woo.src = "images/woo.png"
+    town_close_bg.src = "images/townClose.png"
     sky_bg.src = "images/sky_bg.png"
     
 
     function draw(){
-        soundtrack.play();
+        
 
-        drawBg(sky_bg, bgMove, 0, 0.025) 
-        drawBg(town_far, bgTownFarMove, 284, 0.25)
-        drawBg(ground_bg, bgGround, canvas.height - 150, 1)
+        drawBg(sky_bg, bgMove,1, 0, 0.005) 
+        drawBg(town_far, bgTownFarMove,1, 184, 0.25)
+        drawBg(town_close_bg, bgTownCloseMove,2, 205, 0.5)
+        drawBg(ground_bg, bgGround,1, canvas.height - 150, 1)
 
         ctx.drawImage(moon, 20, 20)
         wooWalk()
-
+        soundtrack.play();
+        
+        
         requestAnimationFrame(draw)
     }
 
@@ -52,15 +61,16 @@ let difficulty = 1;
      ! ATTENTION               
      * @param {*} image --- image that should be shown
      * @param {*} newArr --- array to push another image that should be shown
+     * @param {*} attitude --- image attitude to canvas
      * @param {*} yStartPositionBg --- starting position on axis Y to show image
-     ! @param {*} animationSpeed --- 0.025 /// 0.25 /// 0.5 /// 1       
+     ! @param {*} animationSpeed --- 0.005 /// 0.25 /// 0.5 /// 1       
      */
 
-    function drawBg(image, newArr, yStartPositionBg, animationSpeed) {
+    function drawBg(image, newArr, attitude, yStartPositionBg, animationSpeed) {
         for (let i = 0; i < newArr.length; i++) {
             if(newArr[i].X === 0){
                 newArr.push({
-                    X: canvas.width,
+                    X: canvas.width * attitude,
                     Y: yStartPositionBg
                 })
             }
