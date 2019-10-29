@@ -41,28 +41,9 @@ var wooMove = [{
     
 
     function swipeRule() {
-        let startYPos, 
-            endYPos,
-            difference = 0;
-        canvas.addEventListener('touchstart', () => {
-            startYPos = (event.changedTouches[0].pageY);
-            console.log('start ' + startYPos);
-        })
-        canvas.addEventListener('touchend', () => {
-            endYPos = (event.changedTouches[0].pageY);
-            console.log('end ' + endYPos);
-            difference = startYPos - endYPos;
-            console.log('difference ' + difference);
-        })
-        
-        
-        if (difference > 0) {
-            // * KEYUP
-            wooMove[0].Y -= 5
-        } else {
-            // * KEYDOWN
-            wooMove[0].Y += 5
-        }
+        canvas.addEventListener('touchmove', () => {
+            wooMove[0].Y = (event.changedTouches[0].pageY / window.innerHeight) * canvas.height;
+        })    
     }
 
     swipeRule()
