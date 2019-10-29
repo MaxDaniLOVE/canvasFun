@@ -43,9 +43,9 @@ var coinMove= [{
 
 
     // FULL SCREEN MODE
-    /*canvas.addEventListener('click', () => {
+    canvas.addEventListener('click', () => {
        document.documentElement.webkitRequestFullScreen()
-    })   */
+    }) 
 
 
 
