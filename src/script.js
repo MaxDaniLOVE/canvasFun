@@ -26,12 +26,11 @@ var bgGround = [{
     X: 0,
     Y: canvas.height - 150
 }] 
-var woomove = [{
+var wooMove = [{
     X: 20,
-    Y: canvas.height - 110
+    Y: canvas.height - 110,
+    gravity: 0.3
 }]
-
-let difficulty = 1;
 
     ground_bg.src = "images/ground_bg.png" 
     town_far.src = "images/town_far.png"    
@@ -40,19 +39,42 @@ let difficulty = 1;
     town_close_bg.src = "images/townClose.png"
     sky_bg.src = "images/sky_bg.png"
     
-
+    function keyEventForWoo(){document.addEventListener("keydown", event => {
+        switch (event.keyCode) {
+            case 38:
+                // * KEYUP
+                wooMove[0].Y -= 5
+                break;
+            case 40:
+                // * KEYDOWN
+                wooMove[0].Y += 5
+                break;
+            /*case 37:
+                // * KEYLEFT
+                wooMove[0].X -= 5
+                break;
+            case 39:
+                // * KEYRIGHT
+                wooMove[0].X += 5
+                break;       */     
+        }
+      });}
+    
+    keyEventForWoo()
+    
     function draw(){
-        
-
         drawBg(sky_bg, bgMove,1, 0, 0.005) 
         drawBg(town_far, bgTownFarMove,1, 184, 0.25)
         drawBg(town_close_bg, bgTownCloseMove,2, 205, 0.5)
         drawBg(ground_bg, bgGround,1, canvas.height - 150, 1)
 
         ctx.drawImage(moon, 20, 20)
-        wooWalk()
-        soundtrack.play();
+
+        ctx.drawImage(woo, wooMove[0].X,  wooMove[0].Y)
+
+        wooMove[0].Y += wooMove[0].gravity
         
+        soundtrack.play();
         
         requestAnimationFrame(draw)
     }
@@ -79,13 +101,4 @@ let difficulty = 1;
         }
     }
 
-    /* 
-    TODO: add normal function 
-    */
-
-    function wooWalk() {
-        for(i = 0; i < 10; i++){
-            ctx.drawImage(woo, woomove[0].X,  woomove[0].Y)
-        }
-    }
     sky_bg.onload = draw;
