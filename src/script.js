@@ -71,7 +71,7 @@ var coinMove= [{
        
         soundtrack.play()
         ctx.fillStyle = "#fff"
-        ctx.font = "24px Roboto"
+        ctx.font = "24px Staatliches"
         ctx.fillText(`SCORE: ${score}`, 20, canvas.height - 30)
         requestAnimationFrame(draw)
     }
