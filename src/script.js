@@ -68,7 +68,7 @@ var coinMove= [{
         ctx.drawImage(moon, 20, 20)
         drawCoin()
         ctx.drawImage(woo, wooMove[0].X,  wooMove[0].Y)
-       
+        
         soundtrack.play()
         ctx.fillStyle = "#fff"
         ctx.font = "24px Staatliches"
