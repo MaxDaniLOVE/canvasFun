@@ -37,7 +37,7 @@ var wooMove = [{
 
 var coinMove= [{
     X: 0,
-    Y: 0//Math.random()*450
+    Y: Math.random()*450
 }]
 
 
@@ -61,7 +61,7 @@ var coinMove= [{
 
     function swipeRule() {
         canvas.addEventListener('touchmove', () => {
-            wooMove[0].Y = (event.changedTouches[0].pageY / window.innerHeight) * canvas.height;
+            wooMove[0].Y = ((event.changedTouches[0].pageY / window.innerHeight) * canvas.height) - 32;
             
         })  
           
@@ -148,9 +148,9 @@ var coinMove= [{
         
     }  
     function scoreCount(i) {
-        if (coinMove[i].Y >= wooMove[0].Y - 10
+        if (coinMove[i].Y >= wooMove[0].Y - 20
             && 
-            coinMove[i].Y <= wooMove[0].Y + 25 
+            coinMove[i].Y <= wooMove[0].Y + 35 
             && 
             coinMove[i].X === 40) {
             score++
