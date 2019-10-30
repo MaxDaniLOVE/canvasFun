@@ -13,6 +13,8 @@ let canvas = document.getElementById('canvas'),
 let soundtrack = new Audio;
     soundtrack.src = "audio/dissonance.mp3";
 
+let needToPush = false;    
+
 var bgMove = [{
     X: 0,
     Y: 0
@@ -31,7 +33,7 @@ var bgGround = [{
 }] 
 var wooMove = [{
     X: 20,
-    Y: canvas.height - 110,
+    Y: canvas.height - 160,
     gravity: 0.3
 }]
 
@@ -40,15 +42,10 @@ var coinMove= [{
     Y: Math.random()*450
 }]
 
-
-
     // FULL SCREEN MODE
     canvas.addEventListener('click', () => {
        document.documentElement.webkitRequestFullScreen()
     }) 
-
-
-
 
     ground_bg.src = "images/ground_bg.png" 
     town_far.src = "images/town_far.png"    
@@ -58,21 +55,10 @@ var coinMove= [{
     coin.src = "images/coins.png"
     sky_bg.src = "images/sky_bg.png"
     
+    swipeControlForWoo()
+    keyControlForWoo()
+    checkheight()
 
-    function swipeRule() {
-        canvas.addEventListener('touchmove', () => {
-            wooMove[0].Y = ((event.changedTouches[0].pageY / window.innerHeight) * canvas.height) - 32;
-            
-        })  
-          
-    }
-
-    swipeRule()
-
-    
-    
-    keyEventForWoo()
-    
     function draw(){
         drawBg(sky_bg, bgMove,1, 0, 0.005) 
         drawBg(town_far, bgTownFarMove,1, 184, 0.25)
@@ -82,10 +68,8 @@ var coinMove= [{
         ctx.drawImage(moon, 20, 20)
         drawCoin()
         ctx.drawImage(woo, wooMove[0].X,  wooMove[0].Y)
-
-        wooMove[0].Y += wooMove[0].gravity
-        
-        soundtrack.play();
+       
+        //soundtrack.play()
         ctx.fillStyle = "#fff"
         ctx.font = "24px Roboto"
         ctx.fillText(`SCORE: ${score}`, 20, canvas.height - 30)
@@ -113,7 +97,7 @@ var coinMove= [{
             newArr[i].X -= animationSpeed
         }
     }
-    function keyEventForWoo(){document.addEventListener("keydown", event => {
+    function keyControlForWoo(){document.addEventListener("keydown", event => {
         switch (event.keyCode) {
             case 38:
                 // * KEYUP
@@ -135,26 +119,48 @@ var coinMove= [{
       });}
     function drawCoin() {
         for (let i = 0; i < coinMove.length; i++) {
-            if(coinMove[i].X === 0){
+            if(coinMove[i].X === 0 || needToPush){
                 coinMove.push({
                     X: canvas.width,
                     Y: Math.random()*450
                 })
             }
             ctx.drawImage(coin, coinMove[i].X, coinMove[i].Y)
+            
             coinMove[i].X -= 2;
             scoreCount(i)
         }
         
     }  
+    
+
+    /**
+     * ! @param {*} i --- coinMove element 
+     * ! @param {*} needToPush = false --- doesn't push new coin when element is missed
+     * ! @param {*} needToPush = true ---  pushes new coin when element is catched
+     */
     function scoreCount(i) {
+        needToPush = false;
         if (coinMove[i].Y >= wooMove[0].Y - 20
             && 
             coinMove[i].Y <= wooMove[0].Y + 35 
             && 
             coinMove[i].X === 40) {
             score++
+            coinMove[i].X = -32
+            needToPush = true;
         }
     }
 
+    function swipeControlForWoo() {
+        canvas.addEventListener('touchmove', () => {
+            wooMove[0].Y = ((event.changedTouches[0].pageY / window.innerHeight) * canvas.height) - 32;
+        })  
+    }
+
+    function checkheight() {
+        while (wooMove[0].Y < canvas.height - 160 && wooMove[0].Y >= 0) {
+            wooMove[0].Y += wooMove[0].gravity 
+        } 
+    } 
     sky_bg.onload = draw;
