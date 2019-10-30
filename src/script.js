@@ -69,7 +69,7 @@ var coinMove= [{
         drawCoin()
         ctx.drawImage(woo, wooMove[0].X,  wooMove[0].Y)
        
-        //soundtrack.play()
+        soundtrack.play()
         ctx.fillStyle = "#fff"
         ctx.font = "24px Roboto"
         ctx.fillText(`SCORE: ${score}`, 20, canvas.height - 30)
