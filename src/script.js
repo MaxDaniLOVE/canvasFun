@@ -21,11 +21,11 @@ var bgMove = [{
 }]    
 var bgTownFarMove = [{
     X: 0,
-    Y: 184
+    Y: 143
 }] 
 var bgTownCloseMove = [{
     X: 0,
-    Y: 205
+    Y: 193
 }] 
 var bgGround = [{
     X: 0,
@@ -61,8 +61,8 @@ var coinMove= [{
 
     function draw(){
         drawBg(sky_bg, bgMove,1, 0, 0.005) 
-        drawBg(town_far, bgTownFarMove,1, 184, 0.25)
-        drawBg(town_close_bg, bgTownCloseMove,2, 205, 0.5)
+        drawBg(town_far, bgTownFarMove,1, 143, 0.25)
+        drawBg(town_close_bg, bgTownCloseMove,2, 193, 0.5)
         drawBg(ground_bg, bgGround,1, canvas.height - 200, 1)
         
         ctx.drawImage(moon, 20, 20)
@@ -145,7 +145,9 @@ var coinMove= [{
             && 
             coinMove[i].Y <= wooMove[0].Y + 35 
             && 
-            coinMove[i].X === 40) {
+            coinMove[i].X <= 40
+            &&
+            coinMove[i].X >= 20) {
             score++
             coinMove[i].X = -32
             needToPush = true;
