@@ -10,8 +10,10 @@ let canvas = document.getElementById('canvas'),
     coin = new Image();
     sky_bg = new Image();
     
-let soundtrack = new Audio;
+let soundtrack = new Audio,
+    catchingSound = new Audio;
     soundtrack.src = "audio/dissonance.mp3";
+    catchingSound.src = "audio/catch.mp3";
 
 let needToPush = false;    
 
@@ -151,6 +153,7 @@ var coinMove= [{
             score++
             coinMove[i].X = -32
             needToPush = true;
+            catchingSound.play()
         }
     }
 
