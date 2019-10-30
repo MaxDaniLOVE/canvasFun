@@ -147,7 +147,7 @@ var coinMove= [{
             && 
             coinMove[i].X <= 40
             &&
-            coinMove[i].X >= 20) {
+            coinMove[i].X >= 10) {
             score++
             coinMove[i].X = -32
             needToPush = true;
