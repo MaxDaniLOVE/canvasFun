@@ -47,7 +47,7 @@ var coinMove= [{
     // FULL SCREEN MODE
     canvas.addEventListener('click', () => {
        document.documentElement.webkitRequestFullScreen()
-    }) 
+    })
 
     ground_bg.src = "images/ground_bg.png" 
     town_far.src = "images/town_far.png"    
