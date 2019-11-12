@@ -11,8 +11,8 @@ let canvas = document.getElementById('canvas'),
     
 let soundtrack = new Audio,
     catchingSound = new Audio;
-    soundtrack.src = "audio/dissonance.mp3";
-    catchingSound.src = "audio/catch.mp3";
+    //soundtrack.src = "audio/dissonance.mp3";
+    //catchingSound.src = "audio/catch.mp3";
 
 let needToPush = false;    
 /*
