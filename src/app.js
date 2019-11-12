@@ -1,5 +1,5 @@
 import Background from './background';
-import { canvas, ctx, moon, town_far, ground_bg, woo, town_close_bg, coin, sky_bg, wooMove, coinMove } from './variables';
+import { canvas, ctx, moon, farTownBg, groundBg, woo, closeTownBg, coin, skyBg, wooMove, coinMove } from './variables';
 import swipeControlForWoo from './swipeControl';
 
 let score = 0;
@@ -17,10 +17,10 @@ let needToPush = false;
  ! @param {*} animationSpeed --- 0.005 /// 0.25 /// 0.5 /// 1
  */
 
-const sky = new Background(sky_bg, 0, 'images/sky_bg.png');
-const farTown = new Background(town_far, 143, 'images/town_far.png');
-const closeTown = new Background(town_close_bg, 193, 'images/townClose.png');
-const ground = new Background(ground_bg, 368, 'images/ground_bg.png');
+const sky = new Background(skyBg, 0, 'images/sky_bg.png');
+const farTown = new Background(farTownBg, 143, 'images/town_far.png');
+const closeTown = new Background(closeTownBg, 193, 'images/townClose.png');
+const ground = new Background(groundBg, 368, 'images/ground_bg.png');
 
 
 
