@@ -1,0 +1,25 @@
+{
+  "name": "canvasfun",
+  "version": "1.0.0",
+  "description": "desc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/.bin/webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxDaniLOVE/canvasFun.git"
+  },
+  "author": "Maksim Danilau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxDaniLOVE/canvasFun/issues"
+  },
+  "homepage": "https://github.com/MaxDaniLOVE/canvasFun#readme",
+  "dependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
